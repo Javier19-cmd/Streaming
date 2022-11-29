@@ -15,5 +15,5 @@ app.use(cors()) // Configuarando CORS.
 app.use(express.json()) // Configuración de body-server.
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+  console.log(`Servidor corriendo en el servidor: ${PORT}`)
 })

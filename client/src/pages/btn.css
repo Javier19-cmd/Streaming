@@ -1,0 +1,8 @@
+/*Moviendo el botón al centro de la pantalla*/
+.btn{
+    position: absolute;
+    left: 45%;
+    top: 80%;
+    width: 10%;
+    height: 10%;
+}

@@ -1,0 +1,14 @@
+/*Agregando propiedades responsive*/
+@media screen and (max-width: 500px){
+    .Titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+h1{
+    /*Centrando el título*/
+    text-align: center;
+    color: darkblue;
+}

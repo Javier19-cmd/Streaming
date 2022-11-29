@@ -1,0 +1,70 @@
+/*Colocando color de fondo a la página Home*/
+body{
+ background-color: darkgray;
+}
+
+
+/*Volviendo responsive ciertos aspectos de la página*/
+@media screen and (max-width: 500px){
+    .home{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about{
+        display: flex;
+        left: 1%;
+        top: 96%;
+    }
+
+    .contact{
+        display: flex;
+        left: 95%;
+        top: 96%;
+    }
+
+    .imgP{
+        /* Alineando la imagen al centro */
+        position: absolute;
+        left: 35%;
+        top: 15%;
+        width: 30%;
+        height: 30%;
+    }
+}
+
+.home{
+    /* Padre de todos sus elementos */
+    display: grid;
+    align-items: center;
+    mask-position: relative;
+}
+
+.titulo{
+    /* Alineando el texto al centro */
+    text-align: center;
+}
+
+.about{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 1%;
+    top: 96%;
+}
+
+.contact{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 95%;
+    top: 96%;
+}
+
+.imgP{
+    /* Alineando la imagen al centro */
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    width: 30%;
+    height: 30%;
+}

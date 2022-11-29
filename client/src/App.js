@@ -3,7 +3,6 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Usuario from "./pages/Usuario"
-import "./App.css"
 
 function App() {
   return (

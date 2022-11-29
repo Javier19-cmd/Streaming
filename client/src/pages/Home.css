@@ -1,5 +1,5 @@
 /*Colocando color de fondo a la página Home*/
-body{
+*{
  background-color: darkgray;
 }
 
@@ -58,13 +58,4 @@ body{
     position: absolute;
     left: 95%;
     top: 96%;
-}
-
-.imgP{
-    /* Alineando la imagen al centro */
-    position: absolute;
-    left: 35%;
-    top: 15%;
-    width: 30%;
-    height: 30%;
 }

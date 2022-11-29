@@ -3,16 +3,17 @@ import "./Home.css"
 import imagen1 from "./Assets/Caballo.png"
 import Btn from "./btnUsuario"
 
-function Home() {
+const Home = () => {
   return (
     <div className="home">
-      <h1 className="titulo">Pantalla principal del blog</h1>
-      <img src={imagen1} className="imgP"/>
+      <h1 className="titulo">Bienvenido a la pantalla de inicio del sistema de streaming</h1>
+      <input type="text" placeholder="Usuario" className="txtUsuario"/>
+      <input type="password" placeholder="Contraseña" className="txtContraseña"/>
       <Link to="about" className="about">About</Link>
       <Link to="contact" className="contact">Contacto</Link>
       <Btn/>
     </div>
-  );
+  )
 }
 
 export default Home

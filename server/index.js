@@ -19,28 +19,37 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto: ${PORT}`)
 })
 
-// El async hace el request más fácil.
-app.post('/todos', async (req, res) => {
+// Obteniendo todos los usuarios.
+app.get('/usuarioss', async (req, res) => {
     try {
-        
-        const { description } = req.body // Se destructura la descripción que se manda.
-        const newTodo = await pool.query('INSERT INTO todo (description) VALUES ($1) RETURNING *', [description]) 
-        // conection es la tabla. mensajeExito es la columna. $1 es el valor. RETURNING * sirve para devolver todos los datos de la tabla. 
-        //[description] es el valor que se va a insertar en la tabla.
-        // El RETURNING * hay que verlo en postman para ver que nos devuelve.
-        res.json(newTodo) // El json es para enviar los datos.
-
+        const usuarios = await pool.query("SELECT * FROM usuarios")
+        res.json(usuarios.rows)
     } catch (error) {
         console.log(error.message)
     }
 })
 
-// Insertando datos dentro de la tabla de usuarios.
-app.post('/users', async (req, res) => {
+// Obteniendo el usuario y la contraseña de la base de datos.
+app.get('/usuarios', async (req, res) => {
+    try {
+        const usuario = req.body.usuario
+        const contrasena = req.body.contrasena
+        const usuarioEncontrado = await pool.query('SELECT usuario, contrasena FROM usuarios WHERE usuario = $1 AND contrasena = $2', [usuario, contrasena])
+        res.json(usuarioEncontrado)
+        // console.log(usuarioEncontrado.rows[0].usuario)
+        // console.log(usuarioEncontrado.rows[0].contrasena)
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
+// Método para insertar datos en la tabla de usuarios.
+app.post('/usuariosIns', async (req, res) => {
     try {
         
-        const { description } = req.body // Se destructura la descripción que se manda.
-        const newUser = await pool.query('INSERT INTO usuarios (usuario) VALUES ($1) RETURNING *', [description]) 
+        const usuario = req.body.usuario
+        const contrasena = req.body.contrasena
+        const newUser = await pool.query('INSERT INTO usuarios (usuario, contrasena) VALUES ($1, $2) RETURNING *', [usuario, contrasena]) 
         // conection es la tabla. mensajeExito es la columna. $1 es el valor. RETURNING * sirve para devolver todos los datos de la tabla. 
         //[description] es el valor que se va a insertar en la tabla.
         // El RETURNING * hay que verlo en postman para ver que nos devuelve.

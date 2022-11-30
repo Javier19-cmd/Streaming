@@ -32,18 +32,56 @@
         width: 30%;
         height: 30%;
     }
-}
 
-.home{
-    /* Padre de todos sus elementos */
-    display: grid;
-    align-items: center;
-    mask-position: relative;
+    /*Modificando las propiedades de los inputs*/
+    .InicioSesion{
+        /* Alineando el texto al centro */
+        position: absolute;
+        left: 45%;
+        top: 10%;
+        font-size: 2em;
+    }
+
+    .txtUsuario{
+        /* Alineando el texto al centro */
+        position: absolute;
+        left: 35%;
+        top: 20%;
+        width: 30%;
+        height: 5%;
+    }
+
+    .txtContraseña{
+        /* Alineando el texto al centro */
+        position: absolute;
+        left: 35%;
+        top: 30%;
+        width: 30%;
+        height: 5%;
+    }
+
+    /*Modificando las propiedades de los inputs*/
+    .InicioSesion{
+        /* Alineando el texto al centro */
+        position: absolute;
+        left: 45%;
+        top: 10%;
+        font-size: 2em;
+    }
+
+    .Registro{
+        /* Alineando el texto al centro */
+        position: absolute;
+        left: 46%;
+        top: 40%;
+        font-size: 2em;
+    }
 }
 
 .titulo{
     /* Alineando el texto al centro */
     text-align: center;
+    color: #000;
 }
 
 .about{
@@ -58,4 +96,57 @@
     position: absolute;
     left: 95%;
     top: 96%;
+}
+
+/*Modificando las propiedades de los inputs*/
+.InicioSesion{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 45%;
+    top: 10%;
+    font-size: 2em;
+}
+
+.txtUsuario{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    width: 30%;
+    height: 5%;
+}
+
+.txtContraseña{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 35%;
+    top: 30%;
+    width: 30%;
+    height: 5%;
+}
+
+.btnIniciarSesion{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 45%;
+    top: 40%;
+    width: 10%;
+    height: 5%;
+}
+
+.Registro{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 46%;
+    top: 45%;
+    font-size: 2em;
+}
+
+.btnRegistro{
+    /* Alineando el texto al centro */
+    position: absolute;
+    left: 45%;
+    top: 55%;
+    width: 10%;
+    height: 5%;
 }

@@ -1,5 +1,4 @@
 import {
-    redirect,
     useNavigate
 } from "react-router-dom"
 import "./btn.css"

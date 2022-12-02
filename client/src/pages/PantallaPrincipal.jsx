@@ -8,23 +8,15 @@ const PantallaPrincipal = () => {
 
     const pelicula = async (nombrePelicula) => {
         try{
-            const response = await fetch('http://localhost:5000/peliculas')
+            const response = await fetch(`http://localhost:5000/peliculas/${nombrePelicula}`)
             const data = await response.json()
-
             setPeli(data)
-            console.log(data)
         }catch(error){
             console.log(error)
         }
 
-        // Verificando que la película esté en el arreglo.
-        for (let i = 0; i < peli.length; i++) {
-            if (peli[i].nombre === nombrePelicula) {
-                console.log("Película encontrada")
-            } else {
-                alert("Película no encontrada")
-            }
-        }
+        // Recorriendo el arreglo de películas para devolver la película que se busca.
+        console.log(peli.rows[0].nombre)
     }
     
     return (
@@ -37,13 +29,26 @@ const PantallaPrincipal = () => {
 
                     onClick={() => {
                         const nombrePelicula = document.querySelector(".txtNombrePelicula").value
-                        console.log(nombrePelicula)
+                        //console.log(nombrePelicula)
                         pelicula(nombrePelicula)
                     }}
                 
                     >Solicitar Película</button>
+
+                {/* Verificando que peli no esté vacío */}
+                {peli.length !== 0 ? (
+                    <div>
+                        <h1 className="tituloPelicula">{peli.rows[0].nombre}</h1>
+                        <a href={peli.rows[0].link} className="Link">Link</a>
+                    </div>
+                ) : (
+                    <>
+                        <h1 className="Nada">No se encontró nada</h1>
+                    </> 
+                )}
             </div>
         )
     }
+    
 
 export default PantallaPrincipal

@@ -35,6 +35,48 @@
         left: 35%;
         top: 25%;
     }
+
+    
+    .tituloPelicula{
+        position: absolute;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000000;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 30%;
+        left: 35%;
+        top: 35%;
+    }
+
+    .Link{
+        position: absolute;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000000;
+        background-color: aliceblue;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 30%;
+        left: 35%;
+        top: 40%;
+    }
+
+    .Nada{
+        position: absolute;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000000;
+        background-color: aliceblue;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 30%;
+        left: 35%;
+        top: 35%;
+    }
 }
 
 
@@ -72,4 +114,45 @@
     width: 30%;
     left: 35%;
     top: 25%;
+}
+
+.tituloPelicula{
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 30%;
+    left: 35%;
+    top: 35%;
+}
+
+.Link{
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 30%;
+    left: 35%;
+    top: 40%;
+}
+
+.Nada{
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 30%;
+    left: 35%;
+    top: 35%;
 }

@@ -61,11 +61,13 @@ app.post('/usuariosIns', async (req, res) => {
 })
 
 // Petición para obtener el link de la película.
-app.get('/peliculas', async (req, res) => {
+app.get('/peliculas/:nombre', async (req, res) => {
     try {
-        const nombrePelicula = req.body.nombrePelicula
+        const nombrePelicula = req.params.nombre
         // Usando el operador LIKE para buscar una película.
-        const peliculaEncontrada = await pool.query('SELECT link FROM pelis WHERE nombre LIKE $1', ['%' + nombrePelicula + '%'])
+        const peliculaEncontrada = await pool.query('SELECT nombre, link FROM pelis WHERE nombre LIKE $1', ['%' + nombrePelicula + '%'])
+        console.log(peliculaEncontrada.rows[0].link)
+        console.log(peliculaEncontrada.rows[0].nombre)
         res.json(peliculaEncontrada)
     } catch (error) {
         console.log(error.message)

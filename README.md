@@ -16,6 +16,8 @@ El servidor se actualizará cada vez que se haga un cambio en el código y este 
 Para poder usar la librería de este archivo, es importante tener instalado dotenv, para instalarlo, ejecutar el siguiente comando:
 npm install dotenv --save
 
+Para instalar nodemon se hace lo siguiente: npm install nodemon
+
 # Cliente
 
 Para correr el cliente se debe hacer cd client y ejecutar el siguiente comando:

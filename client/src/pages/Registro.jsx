@@ -1,5 +1,11 @@
-import "./Registro.css";
+import "./Registro.css"
 
+const hmac = (contrasena) => {
+    // Darle la vuelta a la contraseña.
+    let contrasenaInvertida = contrasena.split("").reverse().join("")
+    // console.log(contrasenaInvertida)
+    return contrasenaInvertida
+}
 
 // Método para enviar los datos del usuario a la base de datos.
 const enviarDatos = async (usuario, contrasena) => {
@@ -37,7 +43,8 @@ const Registro = () => {
                 () => {
                     const usuario = document.querySelector(".txtUsuarioo").value
                     const contrasena = document.querySelector(".txtContrasenaa").value
-                    enviarDatos(usuario, contrasena)
+                    console.log(hmac(contrasena))
+                    enviarDatos(usuario, hmac(contrasena))
                 }
             }>Registrar</button>
         </div>

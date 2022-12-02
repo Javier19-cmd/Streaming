@@ -1,0 +1,75 @@
+/*Haciendo responsive la página*/
+@media screen and (max-width: 500px) {
+    .titulo{
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #000000;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+    
+    .txtNombrePelicula{
+        position: absolute;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000000;
+        background-color: aliceblue;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 40%;
+        left: 30%;
+    }
+    
+    .btnSolicitarPelicula{
+        position: absolute;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #000000;
+        background-color: aliceblue;
+        text-align: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        width: 30%;
+        left: 35%;
+        top: 25%;
+    }
+}
+
+
+.titulo{
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.txtNombrePelicula{
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 40%;
+    left: 30%;
+}
+
+.btnSolicitarPelicula{
+    position: absolute;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: aliceblue;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 30%;
+    left: 35%;
+    top: 25%;
+}

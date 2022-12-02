@@ -9,6 +9,7 @@ import Usuario from "./pages/Usuario"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Registro from "./pages/Registro"
+import PantallaPrincipal from "./pages/PantallaPrincipal"
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "registro",
     element: <Registro/>,
+  },
+  {
+    path: "pantalla_principal",
+    element: <PantallaPrincipal/>,
   }
 ])
 

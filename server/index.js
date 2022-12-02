@@ -64,7 +64,7 @@ app.post('/usuariosIns', async (req, res) => {
 app.get('/peliculas', async (req, res) => {
     try {
         const nombrePelicula = req.body.nombrePelicula
-        // Usando el operador ILIKE para buscar una película.
+        // Usando el operador LIKE para buscar una película.
         const peliculaEncontrada = await pool.query('SELECT link FROM pelis WHERE nombre LIKE $1', ['%' + nombrePelicula + '%'])
         res.json(peliculaEncontrada)
     } catch (error) {

@@ -37,6 +37,7 @@ const PantallaPrincipal = () => {
 
                     onClick={() => {
                         const nombrePelicula = document.querySelector(".txtNombrePelicula").value
+                        console.log(nombrePelicula)
                         pelicula(nombrePelicula)
                     }}
                 

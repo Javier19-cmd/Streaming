@@ -16,32 +16,43 @@ const Home = () => {
     
     // console.log(usuario, contrasena)
     try {
-      const response = await fetch("http://localhost:5000/usuarioss")
+      const response = await fetch(`http://localhost:5000/usuarioss/${usuario}`)
       const data = await response.json()
       setDatos(data)
-      console.log(data)
+      //console.log(data)
     } catch (error) {
       console.log(error)
     }
+    
+    console.log(datos[0].usuario)
+  
 
-    // Recorremos el arreglo de datos para verificar si el usuario existe.
-    for (let i = 0; i < datos.length; i++) {
-
-      const contraI = datos[i].contrasena.split("").reverse().join("")
-
-      if (datos[i].usuario === usuario && contraI === contrasena) {
-        //console.log("Usuario encontrado")
-        // console.log(datos[i].usuario)
-        // console.log(datos[i].contrasena)
-        console.log("Usuario encontrado")
-
-        // Navegar a la página de la pantalla principal.
-        navigate1("/pantalla_principal")
-      } else {
-
-        alert("Usuario no encontrado")
-      }
+    if (datos[0].usuario === usuario && datos[0].contrasena.split("").reverse().join("") === contrasena) {
+      console.log("Usuario correcto")
+      navigate1("/pantalla_principal")
+    } else {
+      alert("Ha ocurrido un error")
     }
+
+    // // Recorremos el arreglo de datos para verificar si el usuario existe.
+    // for (let i = 0; i < datos.length; i++) {
+      
+    //   const contraI = datos[i].contrasena.split("").reverse().join("")
+  
+
+    //   if (datos[i].usuario === usuario && contraI === contrasena) {
+    //     //console.log("Usuario encontrado")
+    //     // console.log(datos[i].usuario)
+    //     // console.log(datos[i].contrasena)
+    //     console.log("Usuario encontrado")
+
+    //     // Navegar a la página de la pantalla principal.
+    //     navigate1("/pantalla_principal")
+    //   } else {
+
+    //     alert("Usuario no encontrado")
+    //   }
+    // }
   }
 
   const navigate = useNavigate() // Hook para navegar entre páginas.

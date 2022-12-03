@@ -20,9 +20,13 @@ app.listen(PORT, () => {
 })
 
 // Obteniendo todos los usuarios.
-app.get('/usuarioss', async (req, res) => {
+app.get('/usuarioss/:usuario', async (req, res) => {
+    
+    // Creando variable para obtener el usuario.
+    const usuario = req.params.usuario
+    
     try {
-        const usuarios = await pool.query("SELECT * FROM usuarios")
+        const usuarios = await pool.query("SELECT usuario, contrasena FROM usuarios WHERE usuario = $1", [usuario])
         res.json(usuarios.rows)
     } catch (error) {
         console.log(error.message)

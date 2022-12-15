@@ -1,4 +1,9 @@
 import "./Registro.css"
+import { React, useState } from 'react'
+import {
+    useNavigate
+  } from "react-router-dom"
+import './Home'  
 
 const hmac = (contrasena) => {
     // Darle la vuelta a la contraseña.
@@ -30,6 +35,32 @@ const enviarDatos = async (usuario, contrasena) => {
 // Objetos con los que el usuario interactúa.
 const Registro = () => {
 
+    const navigate1 = useNavigate() // Hook para regresar a Home.
+
+    const [datos, setDatos] = useState([])
+
+      // Método para verificar si el usuario existe en la base de datos.
+    const verificarUsuario = async (usuario, contrasena) => {
+        
+        // console.log(usuario, contrasena)
+        try {
+        const response = await fetch(`http://localhost:5000/usuarioss/${usuario}`)
+        const data = await response.json()
+        setDatos(data)
+        //console.log(data)
+        } catch (error) {
+        console.log(error)
+        }
+        
+        console.log(datos[0].usuario)
+
+        if (datos[0].usuario === usuario) {
+            alert("El usuario ya existe")
+        } else {
+            enviarDatos(usuario, hmac(contrasena))
+        }
+    }
+
     return (
         <div>
             <h1 className="titulo">Bienvenido a la pantalla de registro del sistema de streaming</h1>
@@ -44,9 +75,17 @@ const Registro = () => {
                     const usuario = document.querySelector(".txtUsuarioo").value
                     const contrasena = document.querySelector(".txtContrasenaa").value
                     console.log(hmac(contrasena))
-                    enviarDatos(usuario, hmac(contrasena))
+                    verificarUsuario(usuario, contrasena)
                 }
             }>Registrar</button>
+
+            <button className="btnRegreso" onClick={
+                () => {
+                    navigate1("/") // Regresar a Home.
+                }
+
+            }> Regresar </button>
+
         </div>
     )
 }

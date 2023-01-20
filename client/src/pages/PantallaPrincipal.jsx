@@ -22,7 +22,7 @@ const PantallaPrincipal = () => {
     }
     
     return (
-            <div>
+            <div className="Todo">
                 
                 <h1 className="titulo">Bienvenido a la pantalla principal del sistema de streaming</h1>
                 

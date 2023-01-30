@@ -14,9 +14,9 @@ const Home = () => {
   // Método para verificar si el usuario existe en la base de datos.
   const verificarUsuario = async (usuario, contrasena) => {
     
-    // console.log(usuario, contrasena)
+    //console.log(usuario, contrasena)
     try {
-      const response = await fetch(`http://localhost:5000/usuarioss/${usuario}`)
+      const response = await fetch(`http://localhost:5000/datos`)
       const data = await response.json()
       setDatos(data)
       //console.log(data)
@@ -24,15 +24,26 @@ const Home = () => {
       console.log(error)
     }
     
-    console.log(datos[0].usuario)
+    console.log(usuario)
+    console.log(datos[0].correo)
   
 
-    if (datos[0].usuario === usuario && datos[0].contrasena.split("").reverse().join("") === contrasena) {
-      console.log("Usuario correcto")
-      navigate1("/pantalla_principal")
-    } else {
-      alert("Ha ocurrido un error")
-    }
+    // Verificar si el usuario está en el estado de datos.
+    datos.map((dato) => {
+      if (dato.correo === usuario) {
+        console.log("Usuario existe")
+        // Verificar si la contraseña es correcta.
+        if (dato.contrasena === contrasena) {
+          console.log("Contraseña correcta")
+          // Navegar a la página de inicio.
+          navigate1("/pantalla_principal")
+        } else {
+          console.log("Contraseña incorrecta")
+        }
+      } else {
+        console.log("Usuario no existe")
+      }
+    })
   }
 
   const navigate = useNavigate() // Hook para navegar entre páginas.

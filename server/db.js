@@ -2,16 +2,10 @@
  * Referencias: 
  * 1. Importar un archivo .env: https://www.npmjs.com/package/dotenv
 */
-import pg from 'pg'
-import 'dotenv/config'
+import mongoose from "mongoose"
 
-const pool = new pg.Pool({
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    host: process.env.HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DATABASE,
-    max: process.env.MAX
-})
+const password = process.env.PASSWORD
+const dbname = "test"
+const uri = "mongodb+srv://admin:admin@cluster0.ko8ocfl.mongodb.net/test?retryWrites=true&w=majority"
 
-export default pool
+module.exports = () => mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true})

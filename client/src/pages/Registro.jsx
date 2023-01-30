@@ -14,14 +14,16 @@ const hmac = (contrasena) => {
 
 // Método para enviar los datos del usuario a la base de datos.
 const enviarDatos = async (usuario, contrasena) => {
+    console.log(usuario, contrasena)
+
     try {
-        const response = await fetch("http://localhost:5000/usuariosIns", {
+        const response = await fetch(`http://localhost:5000/user`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                usuario: usuario,
+                correo: usuario,
                 contrasena: contrasena
             })
         })
@@ -42,22 +44,25 @@ const Registro = () => {
       // Método para verificar si el usuario existe en la base de datos.
     const verificarUsuario = async (usuario, contrasena) => {
         
-        // console.log(usuario, contrasena)
+        //console.log(usuario, contrasena)
+        
+        // Obtener los datos de la base de datos.
         try {
-        const response = await fetch(`http://localhost:5000/usuarioss/${usuario}`)
-        const data = await response.json()
-        setDatos(data)
+            const response = await fetch(`http://localhost:5000/datos`)
+            const data = await response.json()
+            setDatos(data)
         //console.log(data)
         } catch (error) {
-        console.log(error)
+            console.log(error)
         }
-        
-        console.log(datos[0].usuario)
 
-        if (datos[0].usuario === usuario) {
+        console.log(datos[0].correo)
+        
+        // Verificando si el usuario existe.
+        if (datos[0].correo === usuario) {
             alert("El usuario ya existe")
         } else {
-            enviarDatos(usuario, hmac(contrasena))
+            enviarDatos(usuario, contrasena)
         }
     }
 
@@ -74,7 +79,6 @@ const Registro = () => {
                 () => {
                     const usuario = document.querySelector(".txtUsuarioo").value
                     const contrasena = document.querySelector(".txtContrasenaa").value
-                    console.log(hmac(contrasena))
                     verificarUsuario(usuario, contrasena)
                 }
             }>Registrar</button>

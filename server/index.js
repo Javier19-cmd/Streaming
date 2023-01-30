@@ -7,73 +7,35 @@
 
 // Importando express.
 import express from 'express'
+import mongoose from 'mongoose'
+import morgan from 'morgan'
 import cors from 'cors'
-const PORT = process.env.PORT || 5000
+
+import router from './router/datos.js'
+import insert from './router/insert.js'
+
 const app = express()
-import pool from './db.js'
+const PORT = process.env.PORT || 5000
+
 
 app.use(cors()) // Configuarando CORS.
 app.use(express.json()) // Configuración de body-server.
 
+
+
+// Conexión a la BDD.
+mongoose.connect(
+    "mongodb+srv://admin:admin@cluster0.ko8ocfl.mongodb.net/Prueba?retryWrites=true&w=majority", 
+    {useNewUrlParser: true, useUnifiedTopology: true})
+    .then(() => console.log("Conectado a la base de datos"))
+    .catch((error) => console.log(error.message)
+    )
+    
+// Listener.
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en el puerto: ${PORT}`)
+    console.log(`Servidor corriendo en el puerto: ${PORT}`)
 })
 
-// Obteniendo todos los usuarios.
-app.get('/usuarioss/:usuario', async (req, res) => {
-    
-    // Creando variable para obtener el usuario.
-    const usuario = req.params.usuario
-    
-    try {
-        const usuarios = await pool.query("SELECT usuario, contrasena FROM usuarios WHERE usuario = $1", [usuario])
-        res.json(usuarios.rows)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
 
-// Obteniendo el usuario y la contraseña de la base de datos.
-app.get('/usuarios', async (req, res) => {
-    try {
-        const usuario = req.body.usuario
-        const contrasena = req.body.contrasena
-        const usuarioEncontrado = await pool.query('SELECT usuario, contrasena FROM usuarios WHERE usuario = $1 AND contrasena = $2', [usuario, contrasena])
-        res.json(usuarioEncontrado)
-        // console.log(usuarioEncontrado.rows[0].usuario)
-        // console.log(usuarioEncontrado.rows[0].contrasena)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
-
-// Método para insertar datos en la tabla de usuarios.
-app.post('/usuariosIns', async (req, res) => {
-    try {
-        
-        const usuario = req.body.usuario
-        const contrasena = req.body.contrasena
-        const newUser = await pool.query('INSERT INTO usuarios (usuario, contrasena) VALUES ($1, $2) RETURNING *', [usuario, contrasena]) 
-        // conection es la tabla. mensajeExito es la columna. $1 es el valor. RETURNING * sirve para devolver todos los datos de la tabla. 
-        //[description] es el valor que se va a insertar en la tabla.
-        // El RETURNING * hay que verlo en postman para ver que nos devuelve.
-        res.json(newUser) // El json es para enviar los datos.
-
-    } catch (error) {
-        console.log(error.message)
-    }
-})
-
-// Petición para obtener el link de la película.
-app.get('/peliculas/:nombre', async (req, res) => {
-    try {
-        const nombrePelicula = req.params.nombre
-        // Usando el operador LIKE para buscar una película.
-        const peliculaEncontrada = await pool.query('SELECT nombre, link FROM pelis WHERE nombre LIKE $1', ['%' + nombrePelicula + '%'])
-        console.log(peliculaEncontrada.rows[0].link)
-        console.log(peliculaEncontrada.rows[0].nombre)
-        res.json(peliculaEncontrada)
-    } catch (error) {
-        console.log(error.message)
-    }
-})
+app.use('/datos', router) // Retraer datos.
+app.use('/user', insert) // Insertar datos.

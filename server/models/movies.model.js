@@ -8,7 +8,7 @@ const moviesSchema = new Schema({
         type: String,
     },
     fecha: {
-        type: String,
+        type: Date,
     },
     premios: {
         type: Array,

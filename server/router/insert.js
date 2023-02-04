@@ -13,6 +13,8 @@ router.post('/', async (req, res) => {
     const correo = new insert(req.body)
     const contrasena = new insert(req.body)
 
+    console.log(correo)
+
     await correo.save()
     .then(() => { res.json('Datos insertados') })
     .catch((error) => { res.status(400).json('Error: ' + error) })

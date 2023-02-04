@@ -7,16 +7,11 @@ const PantallaPrincipal = () => {
     const [peli, setPeli] = useState([]) // Arreglo para guardar las películas.
 
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
-        
+    
         // Solicitando la película.
         try{
             // Haciendo la petición.
-            const response = await fetch(`http://localhost:5000/movies`, {
-                method: "GET",
-                params: {
-                    nombre: nombrePelicula
-                }
-            })
+            const response = await fetch(`http://localhost:5000/movies/${nombrePelicula}`)
             // Convirtiendo la respuesta a JSON.
             const data = await response.json()
             setPeli(data)
@@ -57,7 +52,7 @@ const PantallaPrincipal = () => {
                                     <div className="Pelicula">
                                         <h1 className="NombrePelicula">{pelicula.nombre}</h1>
         
-                                        <ReactPlayer url={pelicula.url} controls={true} />
+                                        <ReactPlayer url={pelicula.Link} controls={true} />
                                     </div>
                                 )
                             })

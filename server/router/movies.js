@@ -4,15 +4,14 @@ const movie = express.Router()
 import movies from '../models/movies.model.js'
 
 // Obteniendo los datos.
-movie.get('/', async (req, res) => {
+movie.get('/:dato', async (req, res) => {
     // Buscando los datos por cualquier campo.
-    const search = req.query
+    const search  = req.params.dato
 
-    // Creando una búsqueda como like en SQL.
-    const regex = new RegExp(search.nombre, 'i')
-
+    console.log(search)
     // Buscando los datos.
-    await movies.find({nombre: regex})
+    await movies.find(
+        {nombre: {$regex: `.*${search}.*`, $options: 'i'}},)
     .then((data) => { res.json(data) })
     .catch((error) => { res.status(400).json('Error: ' + error) })
 })

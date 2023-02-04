@@ -6,19 +6,24 @@ const PantallaPrincipal = () => {
      
     const [peli, setPeli] = useState([]) // Arreglo para guardar las películas.
 
-    const pelicula = async (nombrePelicula) => {
+    const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
+        
+        // Solicitando la película.
         try{
-            const response = await fetch(`http://localhost:5000/peliculas/${nombrePelicula}`)
+            // Haciendo la petición.
+            const response = await fetch(`http://localhost:5000/movies`, {
+                method: "GET",
+                params: {
+                    nombre: nombrePelicula
+                }
+            })
+            // Convirtiendo la respuesta a JSON.
             const data = await response.json()
-            // Pasando los datos en formato json a un arreglo.
             setPeli(data)
+            console.log(data)
         }catch(error){
             console.log(error)
         }
-
-        // Recorriendo el arreglo de películas para devolver la película que se busca.
-        // console.log(peli.rows.nombre)
-        // console.log(peli)
     }
     
     return (
@@ -47,24 +52,12 @@ const PantallaPrincipal = () => {
                         {/* Recorriendo e imprimiendo la lista de películas */}
                         
                         {
-                            // Imprimiendo cada uno de los elementos del arreglo.
-                            peli.rows.map((pelicula) => {
+                            peli.map((pelicula) => {
                                 return(
-                                    
-                                    <div className="pelicula">
-                                        
-                                        <h1 className="nombrePelicula">
-                                            {pelicula.nombre}
-                                        </h1>
-                                        
-                                        <ReactPlayer 
-                                            className="videoPelicula" 
-                                            url={pelicula.link} 
-                                            controls={true} 
-                                            width="50%" 
-                                            height="100%"
-                                        />
-
+                                    <div className="Pelicula">
+                                        <h1 className="NombrePelicula">{pelicula.nombre}</h1>
+        
+                                        <ReactPlayer url={pelicula.url} controls={true} />
                                     </div>
                                 )
                             })

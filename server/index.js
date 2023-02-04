@@ -11,8 +11,11 @@ import mongoose from 'mongoose'
 import morgan from 'morgan'
 import cors from 'cors'
 
+// Importando los routers. 
 import router from './router/datos.js'
 import insert from './router/insert.js'
+import movie from './router/movies.js'
+
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -39,3 +42,4 @@ app.listen(PORT, () => {
 
 app.use('/datos', router) // Retraer datos.
 app.use('/user', insert) // Insertar datos.
+app.use('/movies', movie) // Retraer datos de la BDD de películas.

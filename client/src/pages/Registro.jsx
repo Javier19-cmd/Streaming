@@ -64,6 +64,7 @@ const Registro = () => {
         } else {
             enviarDatos(usuario, contrasena)
         }
+
     }
 
     return (

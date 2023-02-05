@@ -13,9 +13,9 @@ const reprod = (link) => {
 }
 
 const Like = (usuario, pelicula, link) => {
-    console.log(usuario)
-    console.log(pelicula)
-    console.log(link)
+    // console.log(usuario)
+    // console.log(pelicula)
+    // console.log(link)
 
     // Obteniendo el id del usuario.
     const id_user = usuario.id
@@ -45,8 +45,8 @@ const PantallaPrincipal = () => {
 
     const {usuario, id} = useParams()
 
-    console.log("Usuario en la pantalla principal", usuario)
-    console.log("Id del usuario", id)
+    // console.log("Usuario en la pantalla principal", usuario)
+    // console.log("Id del usuario", id)
 
 
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.

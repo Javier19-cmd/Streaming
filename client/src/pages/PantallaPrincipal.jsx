@@ -36,7 +36,7 @@ const Like = (usuario, pelicula, link) => {
             })
         })
     } catch (error) {
-        console.log(error)
+        alert("No se puede dar like dos veces a la misma película")
     }
 }
 

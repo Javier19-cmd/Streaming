@@ -85,10 +85,36 @@
         top: 50%;
         left: 35%;
     }
+
+    .NombrePelicula{
+        position: relative;
+        text-align: center;
+        top: 75%;
+        /*Centrando  el botón*/
+        left: 2%;
+    }
+
+    .btnReproducirPelicula{
+        position: relative;
+        top: 100%;
+        left: 45%;
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;	
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #2e0083;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+    }
 }
 
 .Todo{
-    position: absolute;
+    position: relative;
 }
 
 .titulo{
@@ -171,16 +197,36 @@
 
 .pelicula{
     position: relative;
-    top: 200%;
+    top: 100%;
 }
 
-.nombrePelicula{
+.NombrePelicula{
     position: relative;
+    text-align: center;
     top: 75%;
+    /*Centrando  el botón*/
+    left: 2%;
 }
 
 .videoPelicula{
     position: relative;
     top: 100%;
-    left: 25%;
+}
+
+.btnReproducirPelicula{
+    position: relative;
+    top: 100%;
+    left: 45%;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;	
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #2e0083;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
 }

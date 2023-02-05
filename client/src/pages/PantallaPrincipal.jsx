@@ -1,10 +1,53 @@
 import "./PantallaPrincipal.css"
 import {React, useState} from "react"
 import ReactPlayer from 'react-player'
+import { useParams } from "react-router-dom"
+
+const reprod = (link) => {
+
+    console.log(link)
+
+    return (
+        <ReactPlayer className="pelicula" url={link} controls={true} />
+    )
+}
+
+const Like = (usuario, pelicula, link) => {
+    console.log(usuario)
+    console.log(pelicula)
+    console.log(link)
+
+    // Obteniendo el id del usuario.
+    const id_user = usuario.id
+    console.log(id_user)
+
+    // Enviando los datos al servidor.
+    try {
+        fetch('http://localhost:5000/likes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario: usuario,
+                id: id_user,
+                pelicula: pelicula,
+                link: link
+            })
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const PantallaPrincipal = () => {
-     
     const [peli, setPeli] = useState([]) // Arreglo para guardar las películas.
+
+    const {usuario, id} = useParams()
+
+    console.log("Usuario en la pantalla principal", usuario)
+    console.log("Id del usuario", id)
+
 
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
     
@@ -52,7 +95,29 @@ const PantallaPrincipal = () => {
                                     <div className="Pelicula">
                                         <h1 className="NombrePelicula">{pelicula.nombre}</h1>
         
-                                        <ReactPlayer url={pelicula.Link} controls={true} />
+                                        {/* Creando un botón para reproducir la película deseada */}
+
+                                        <button className="btnReproducirPelicula"
+                                            
+                                            onClick={() => {
+                                                const video = pelicula.Link
+                                                reprod(video)
+                                            }}
+
+                                        >Reproducir Película</button>
+
+                                        <button 
+                                            className="btnLike"
+                                            
+                                            /* Obteniendo el usuario y la película a dar like*/
+                                            onClick={() => {
+                                                const pel = pelicula.nombre // Nombre de la película.
+                                                const link = pelicula.Link // Link de la película.
+                                                Like(usuario, pel, link)
+
+                                            }}
+                                            >Like</button>
+
                                     </div>
                                 )
                             })

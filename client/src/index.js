@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <Registro/>,
   },
   {
-    path: "pantalla_principal",
+    path: "pantalla_principal/:usuario/:id",
     element: <PantallaPrincipal/>,
   }
 ])

@@ -15,6 +15,7 @@ import cors from 'cors'
 import router from './router/datos.js'
 import insert from './router/insert.js'
 import movie from './router/movies.js'
+import like from './router/likes.js'
 
 
 const app = express()
@@ -43,3 +44,4 @@ app.listen(PORT, () => {
 app.use('/datos', router) // Retraer datos.
 app.use('/user', insert) // Insertar datos.
 app.use('/movies', movie) // Retraer datos de la BDD de películas.
+app.use('/likes', like) // Retraer datos de la BDD de likes.

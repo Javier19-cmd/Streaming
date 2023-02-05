@@ -26,8 +26,8 @@ const Home = () => {
     
     console.log(usuario)
     console.log(datos[0].correo)
-  
 
+    
     // Verificar si el usuario está en el estado de datos.
     datos.map((dato) => {
       if (dato.correo === usuario) {
@@ -36,7 +36,8 @@ const Home = () => {
         if (dato.contrasena === contrasena) {
           console.log("Contraseña correcta")
           // Navegar a la página de inicio.
-          navigate1("/pantalla_principal")
+          const id = dato._id // Guardando el id del usuario.
+          navigate1(`/pantalla_principal/${usuario}/${id}`)
         } else {
           console.log("Contraseña incorrecta")
         }

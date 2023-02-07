@@ -16,6 +16,7 @@ import router from './router/datos.js'
 import insert from './router/insert.js'
 import movie from './router/movies.js'
 import like from './router/likes.js'
+import historial from './router/historial.js'
 
 
 const app = express()
@@ -45,3 +46,4 @@ app.use('/datos', router) // Retraer datos.
 app.use('/user', insert) // Insertar datos.
 app.use('/movies', movie) // Retraer datos de la BDD de películas.
 app.use('/likes', like) // Retraer datos de la BDD de likes.
+app.use('/historial', historial) // Retraer datos de la BDD de historial.

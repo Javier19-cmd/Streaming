@@ -4,13 +4,13 @@ import ReactPlayer from 'react-player'
 import { useParams } from "react-router-dom"
 
 
-const Like = (usuario, pelicula, link) => {
+const Like = (usuario,id_user, pelicula, link) => {
     // console.log(usuario)
     // console.log(pelicula)
     // console.log(link)
 
     // Obteniendo el id del usuario.
-    const id_user = usuario.id
+    //const id_user = usuario.id
     console.log(id_user)
 
     // Enviando los datos al servidor.
@@ -22,13 +22,36 @@ const Like = (usuario, pelicula, link) => {
             },
             body: JSON.stringify({
                 usuario: usuario,
-                id: id_user,
+                id_usuario: id_user,
                 pelicula: pelicula,
                 link: link
             })
         })
     } catch (error) {
         alert("No se puede dar like dos veces a la misma película")
+    }
+}
+
+const historial = (usuario, id_user, pelicula, link) => { // Método para mandar los videos que se reproducen a la colección 'historial'.
+    console.log("Datos para mandar al historial: ", usuario, pelicula, link)
+    console.log("Id del usuario: ", id_user)
+
+    // Enviando los datos al servidor.
+    try {
+        fetch('http://localhost:5000/historial', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                usuario: usuario,
+                id_usuario: id_user,
+                pelicula: pelicula,
+                link: link
+            })
+        })
+    } catch (error) {
+        alert("Ha ocurrido un error al mandar los datos al historial")
     }
 }
 
@@ -40,7 +63,7 @@ const PantallaPrincipal = () => {
     const {usuario, id} = useParams()
 
     // console.log("Usuario en la pantalla principal", usuario)
-    // console.log("Id del usuario", id)
+    //console.log("Id del usuario", id)
 
     const handleClick = () => {
         setShowVideo(true)
@@ -96,7 +119,12 @@ const PantallaPrincipal = () => {
                                         {/* Creando un botón para reproducir la película deseada */}
 
                                         <button className="btnReproducirPelicula"
-                                            onClick={handleClick}
+                                            onClick={
+                                                () => {
+                                                    handleClick() // Reproduciendo el video.
+                                                    historial(usuario, id, pelicula.nombre, pelicula.Link) // Mandando los datos al historial.
+                                                }
+                                            }
                                         >Reproducir Película</button>
                                         {
                                             showVideo && (
@@ -111,7 +139,7 @@ const PantallaPrincipal = () => {
                                             onClick={() => {
                                                 const pel = pelicula.nombre // Nombre de la película.
                                                 const link = pelicula.Link // Link de la película.
-                                                Like(usuario, pel, link)
+                                                Like(usuario, id, pel, link)
 
                                             }}
                                             >Like</button>

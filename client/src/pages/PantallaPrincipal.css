@@ -228,8 +228,9 @@
 }
 
 .videoPelicula{
-    position: relative;
+    position: absolute;
     top: 100%;
+    left: 35%;
 }
 
 .btnReproducirPelicula{

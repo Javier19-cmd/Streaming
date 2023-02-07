@@ -3,14 +3,6 @@ import {React, useState} from "react"
 import ReactPlayer from 'react-player'
 import { useParams } from "react-router-dom"
 
-const reprod = (link) => {
-
-    console.log(link)
-
-    return (
-        <ReactPlayer className="pelicula" url={link} controls={true} />
-    )
-}
 
 const Like = (usuario, pelicula, link) => {
     // console.log(usuario)
@@ -43,10 +35,16 @@ const Like = (usuario, pelicula, link) => {
 const PantallaPrincipal = () => {
     const [peli, setPeli] = useState([]) // Arreglo para guardar las películas.
 
+    const [showVideo, setShowVideo] = useState(false) // Variable para mostrar el video.
+
     const {usuario, id} = useParams()
 
     // console.log("Usuario en la pantalla principal", usuario)
     // console.log("Id del usuario", id)
+
+    const handleClick = () => {
+        setShowVideo(true)
+    } // Método para reproducir el video.
 
 
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
@@ -98,13 +96,13 @@ const PantallaPrincipal = () => {
                                         {/* Creando un botón para reproducir la película deseada */}
 
                                         <button className="btnReproducirPelicula"
-                                            
-                                            onClick={() => {
-                                                const video = pelicula.Link
-                                                reprod(video)
-                                            }}
-
+                                            onClick={handleClick}
                                         >Reproducir Película</button>
+                                        {
+                                            showVideo && (
+                                                <ReactPlayer className="videoPelicula" url={pelicula.Link} controls={true}/>
+                                            )
+                                        }
 
                                         <button 
                                             className="btnLike"

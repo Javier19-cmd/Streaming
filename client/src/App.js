@@ -1,20 +1,25 @@
-import { Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
-import About from "./pages/About"
-import Contact from "./pages/Contact"
-import Usuario from "./pages/Usuario"
+import { Route, Routes } from "react-router-dom";
+import ProtectedRoutes from "./ProtectedRoutes";
+import Login from "./pages/Login/Login";
+import Registro from "./pages/Registro/Registro";
+import User from "./pages/User/User";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Home from "./pages/Home/Home";
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={ <Home/> } />
-        <Route path="about" element={ <About/> } />
-        <Route path="contact" element={ <Contact/> } />
-        <Route path="usuario" element={ <Usuario/> } />
-      </Routes>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/registro" element={<Registro />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/usuario" element={<User />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/pantalla_principal/:usuario/:id" element={<Home />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;

@@ -1,50 +1,26 @@
 import { Link } from "react-router-dom"
-import { React, useState } from 'react'
-import "./Home.css"
-import {
-  useNavigate
-} from "react-router-dom"
+import { React } from 'react'
+import "./Login.css"
+import { useNavigate } from "react-router-dom"
+import axios from 'axios';
 
-const Home = () => {
+const Login = () => {
 
   const navigate1 = useNavigate() // Hook para navegar entre páginas.
-
-  const [datos, setDatos] = useState([])
 
   // Método para verificar si el usuario existe en la base de datos.
   const verificarUsuario = async (usuario, contrasena) => {
     
     //console.log(usuario, contrasena)
     try {
-      const response = await fetch(`http://localhost:5000/datos`)
-      const data = await response.json()
-      setDatos(data)
+      axios.post('http://localhost:5000/login', { email: usuario, password: contrasena }).then((res) => {
+        localStorage.setItem('token', res.data.token);
+        navigate1(`/pantalla_principal/${usuario}/${res.data.user.id}`)
+      })
       //console.log(data)
     } catch (error) {
       console.log(error)
     }
-    
-    console.log(usuario)
-    console.log(datos[0].correo)
-
-    
-    // Verificar si el usuario está en el estado de datos.
-    datos.map((dato) => {
-      if (dato.correo === usuario) {
-        console.log("Usuario existe")
-        // Verificar si la contraseña es correcta.
-        if (dato.contrasena === contrasena) {
-          console.log("Contraseña correcta")
-          // Navegar a la página de inicio.
-          const id = dato._id // Guardando el id del usuario.
-          navigate1(`/pantalla_principal/${usuario}/${id}`)
-        } else {
-          console.log("Contraseña incorrecta")
-        }
-      } else {
-        console.log("Usuario no existe")
-      }
-    })
   }
 
   const navigate = useNavigate() // Hook para navegar entre páginas.
@@ -72,4 +48,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Login;

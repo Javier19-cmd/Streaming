@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Usuario.css"
+import "./User.css"
 
 const Usuario = () => {
     return (

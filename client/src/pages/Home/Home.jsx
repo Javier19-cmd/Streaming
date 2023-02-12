@@ -1,8 +1,8 @@
-import "./PantallaPrincipal.css"
-import {React, useState} from "react"
-import ReactPlayer from 'react-player'
-import { useParams } from "react-router-dom"
-
+import "./Home.css";
+import {React, useState} from "react";
+import ReactPlayer from 'react-player';
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const Like = (usuario,id_user, pelicula, link) => {
     // console.log(usuario)
@@ -18,7 +18,8 @@ const Like = (usuario,id_user, pelicula, link) => {
         fetch('http://localhost:5000/likes', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify({
                 usuario: usuario,
@@ -41,7 +42,8 @@ const historial = (usuario, id_user, pelicula, link) => { // Método para mandar
         fetch('http://localhost:5000/historial', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
             },
             body: JSON.stringify({
                 usuario: usuario,
@@ -55,7 +57,7 @@ const historial = (usuario, id_user, pelicula, link) => { // Método para mandar
     }
 }
 
-const PantallaPrincipal = () => {
+const Home = () => {
     const [peli, setPeli] = useState([]) // Arreglo para guardar las películas.
 
     const [showVideo, setShowVideo] = useState(false) // Variable para mostrar el video.
@@ -75,7 +77,11 @@ const PantallaPrincipal = () => {
         // Solicitando la película.
         try{
             // Haciendo la petición.
-            const response = await fetch(`http://localhost:5000/movies/${nombrePelicula}`)
+            const response = await axios.get(`http://localhost:5000/movies/${nombrePelicula}`, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            });
             // Convirtiendo la respuesta a JSON.
             const data = await response.json()
             setPeli(data)
@@ -161,4 +167,4 @@ const PantallaPrincipal = () => {
     }
     
 
-export default PantallaPrincipal
+export default Home;

@@ -7,9 +7,6 @@ const moviesSchema = new Schema({
     nombre: {
         type: String,
     },
-    fecha: {
-        type: Date,
-    },
     generos: {
         type: Array,
     },

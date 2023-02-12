@@ -12,6 +12,7 @@ export const searchMovie = async (req, res) => {
             {actores: {$elemMatch: {$regex: `.*${search}.*`, $options: 'i'}}},
             {generos: {$elemMatch: {$regex: `.*${search}.*`, $options: 'i'}}},
         ]})
-    .then((data) => { res.json(data) })
-    .catch((error) => { res.status(400).json('Error: ' + error) })
+        .sort({nombre: 1})
+        .then((data) => { res.json(data) })
+        .catch((error) => { res.status(400).json('Error: ' + error) })
 } 

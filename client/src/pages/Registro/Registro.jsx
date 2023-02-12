@@ -10,7 +10,7 @@ const enviarDatos = async (usuario, contrasena) => {
     console.log(usuario, contrasena)
 
     try {
-        const response = await fetch(`http://localhost:5000/user`, {
+        const response = await fetch(`http://localhost:5000/register`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -20,6 +20,7 @@ const enviarDatos = async (usuario, contrasena) => {
                 contrasena: contrasena
             })
         })
+        // Enviamos los datos al servidor.
         const data = await response.json()
         console.log(data)
     } catch (error) {

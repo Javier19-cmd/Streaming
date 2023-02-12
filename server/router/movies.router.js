@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { createMovie } from "../controllers/movies.controller.js";
+import { searchMovie } from "../controllers/movies.controller.js";
+import { verifyToken } from "../utils/auth.js";
 
 const router = Router();
 
-router.post('/movies/:dato', createMovie);
+router.get('/movies/:dato', verifyToken, searchMovie);
 
 
 export default router;

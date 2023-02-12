@@ -1,6 +1,6 @@
 import Movie from "../models/movies.model.js";
 
-export const createMovie = async (req, res) => {
+export const searchMovie = async (req, res) => {
     // Buscando los datos por cualquier campo.
     const search  = req.params.dato
 

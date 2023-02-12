@@ -24,6 +24,6 @@ const historySchema = new Schema({
     }
 })
 
-const History = mongoose.model("historial", historySchema)
+const History = mongoose.model("historials", historySchema)
 
 export default History;

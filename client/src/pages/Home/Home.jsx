@@ -71,7 +71,6 @@ const Home = () => {
         setShowVideo(true)
     } // Método para reproducir el video.
 
-
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
     
         // Solicitando la película.
@@ -134,7 +133,7 @@ const Home = () => {
                                         >Reproducir Película</button>
                                         {
                                             showVideo && (
-                                                <ReactPlayer className="videoPelicula" url={pelicula.Link} controls={true}/>
+                                                <ReactPlayer className="videoPelicula" url={pelicula.link} controls={true}/>
                                             )
                                         }
 

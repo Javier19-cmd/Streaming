@@ -9,8 +9,8 @@ export const saveLike = async (req, res) => {
         link: req.body.link
     })
 
-    // Guardando el like.
+    // Guardando los datos en la base de datos.
     await newLike.save()
-    .then(() => { res.json('Like creado con éxito.') })
+    .then(() => { res.json('Like guardado') })
     .catch((error) => { res.status(400).json('Error: ' + error) })
 }

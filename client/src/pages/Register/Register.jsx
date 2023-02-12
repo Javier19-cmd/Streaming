@@ -20,6 +20,7 @@ const enviarDatos = async (usuario, contrasena) => {
                 password: contrasena
             })
         })
+        // Enviamos los datos al servidor.
         const data = await response.json()
         console.log(data)
     } catch (error) {

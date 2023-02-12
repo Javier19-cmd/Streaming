@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 // Creando el esquema.
-const historialSchema = new Schema({
+const historySchema = new Schema({
     usuario: {
         type: String,
         required: true
@@ -24,6 +24,6 @@ const historialSchema = new Schema({
     }
 })
 
-const Historial = mongoose.model("historial", historialSchema)
+const History = mongoose.model("historial", historySchema)
 
-export default Historial
+export default History;

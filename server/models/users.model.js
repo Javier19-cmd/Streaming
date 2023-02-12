@@ -7,7 +7,7 @@ import mongoose from "mongoose"
 const Schema = mongoose.Schema
 
 // Creando el esquema para insertar y consultar usuarios.
-const insertSchema = new Schema({
+const userSchema = new Schema({
     correo: {
         type: String,
         required: true
@@ -19,7 +19,7 @@ const insertSchema = new Schema({
 })
 
 // Creando el modelo.
-const insert = mongoose.model("usuarios", insertSchema)
+const User = mongoose.model("usuarios", userSchema);
 
 // Exportando el modelo.
-export default insert
+export default User;

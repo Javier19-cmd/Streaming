@@ -8,15 +8,13 @@
 // Importando express.
 import express from 'express'
 import mongoose from 'mongoose'
-import morgan from 'morgan'
 import cors from 'cors'
 
 // Importando los routers. 
-import router from './router/datos.js'
-import insert from './router/insert.js'
-import movie from './router/movies.js'
-import like from './router/likes.js'
-import historial from './router/historial.js'
+import userRouter from './router/users.router.js';
+import movieRouter from './router/movies.router.js';
+import likesRouter from './router/likes.router.js';
+import historyRouter from './router/history.router.js';
 
 
 const app = express()
@@ -41,9 +39,7 @@ app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto: ${PORT}`)
 })
 
-
-app.use('/datos', router) // Retraer datos.
-app.use('/user', insert) // Insertar datos.
-app.use('/movies', movie) // Retraer datos de la BDD de películas.
-app.use('/likes', like) // Retraer datos de la BDD de likes.
-app.use('/historial', historial) // Retraer datos de la BDD de historial.
+app.use(userRouter) // Usuarios.
+app.use(movieRouter) // Retraer datos de la BDD de películas.
+app.use(likesRouter) // Retraer datos de la BDD de likes.
+app.use(historyRouter) // Retraer datos de la BDD de historial.

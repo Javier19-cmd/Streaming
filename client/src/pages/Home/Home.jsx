@@ -71,7 +71,6 @@ const Home = () => {
         setShowVideo(true)
     } // Método para reproducir el video.
 
-
     const pelicula = async (nombrePelicula) => { // Método para solicitar la película.
     
         // Solicitando la película.
@@ -83,7 +82,7 @@ const Home = () => {
                 }
             });
             // Convirtiendo la respuesta a JSON.
-            const data = await response.json()
+            const data = await response.data
             setPeli(data)
             console.log(data)
         }catch(error){
@@ -128,13 +127,13 @@ const Home = () => {
                                             onClick={
                                                 () => {
                                                     handleClick() // Reproduciendo el video.
-                                                    historial(usuario, id, pelicula.nombre, pelicula.Link) // Mandando los datos al historial.
+                                                    historial(usuario, id, pelicula.nombre, pelicula.link) // Mandando los datos al historial.
                                                 }
                                             }
                                         >Reproducir Película</button>
                                         {
                                             showVideo && (
-                                                <ReactPlayer className="videoPelicula" url={pelicula.Link} controls={true}/>
+                                                <ReactPlayer className="videoPelicula" url={pelicula.link} controls={true}/>
                                             )
                                         }
 
@@ -144,7 +143,7 @@ const Home = () => {
                                             /* Obteniendo el usuario y la película a dar like*/
                                             onClick={() => {
                                                 const pel = pelicula.nombre // Nombre de la película.
-                                                const link = pelicula.Link // Link de la película.
+                                                const link = pelicula.link // Link de la película.
                                                 Like(usuario, id, pel, link)
 
                                             }}

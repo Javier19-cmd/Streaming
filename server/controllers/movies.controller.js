@@ -6,8 +6,12 @@ export const searchMovie = async (req, res) => {
 
     console.log(search)
     // Buscando los datos.
-    await Movie.find(
-        {nombre: {$regex: `.*${search}.*`, $options: 'i'}},)
+    await Movie.find({
+        $or: [
+            {nombre: {$regex: `.*${search}.*`, $options: 'i'}},
+            {actores: {$elemMatch: {$regex: `.*${search}.*`, $options: 'i'}}},
+            {generos: {$elemMatch: {$regex: `.*${search}.*`, $options: 'i'}}},
+        ]})
     .then((data) => { res.json(data) })
     .catch((error) => { res.status(400).json('Error: ' + error) })
 } 

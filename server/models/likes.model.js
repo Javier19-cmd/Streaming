@@ -16,7 +16,8 @@ const likesSchema = new Schema({
     },
     pelicula: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     link: {
         type: String,

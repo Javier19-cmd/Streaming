@@ -83,7 +83,7 @@ const Home = () => {
                 }
             });
             // Convirtiendo la respuesta a JSON.
-            const data = await response.json()
+            const data = await response.data;
             setPeli(data)
             console.log(data)
         }catch(error){
@@ -117,9 +117,9 @@ const Home = () => {
                         {/* Recorriendo e imprimiendo la lista de películas */}
                         
                         {
-                            peli.map((pelicula) => {
+                            peli.map((pelicula, i) => {
                                 return(
-                                    <div className="Pelicula">
+                                    <div key={i} className="Pelicula">
                                         <h1 className="NombrePelicula">{pelicula.nombre}</h1>
         
                                         {/* Creando un botón para reproducir la película deseada */}
@@ -128,7 +128,7 @@ const Home = () => {
                                             onClick={
                                                 () => {
                                                     handleClick() // Reproduciendo el video.
-                                                    historial(usuario, id, pelicula.nombre, pelicula.Link) // Mandando los datos al historial.
+                                                    historial(usuario, id, pelicula.nombre, pelicula.link) // Mandando los datos al historial.
                                                 }
                                             }
                                         >Reproducir Película</button>
@@ -144,7 +144,7 @@ const Home = () => {
                                             /* Obteniendo el usuario y la película a dar like*/
                                             onClick={() => {
                                                 const pel = pelicula.nombre // Nombre de la película.
-                                                const link = pelicula.Link // Link de la película.
+                                                const link = pelicula.link // Link de la película.
                                                 Like(usuario, id, pel, link)
 
                                             }}

@@ -7,10 +7,7 @@ const moviesSchema = new Schema({
     nombre: {
         type: String,
     },
-    fecha: {
-        type: Date,
-    },
-    premios: {
+    generos: {
         type: Array,
     },
     actores: {

@@ -1,0 +1,57 @@
+body {
+    background-image: url('./assets/background.jpg');
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10% !important;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.main-h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #23A574 !important;
+}
+
+.input-text,
+.input-password {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.btnIniciarSesion {
+    width: 100%;
+    padding: 10px;
+    background-color: #23A574;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btnIniciarSesion:hover {
+    background-color: #1E855F;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.logo-img {
+    width: 50%;
+}

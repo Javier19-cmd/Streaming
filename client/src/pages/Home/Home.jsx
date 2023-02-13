@@ -1,5 +1,5 @@
 import "./Home.css";
-import {React, useState} from "react";
+import {React, useState, useEffect} from "react";
 import ReactPlayer from 'react-player';
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -63,6 +63,11 @@ const Home = () => {
     const [showVideo, setShowVideo] = useState(false) // Variable para mostrar el video.
 
     const {usuario, id} = useParams()
+
+    useEffect(() => {
+        document.body.style.backgroundColor = '#1E855F';
+        document.body.style.backgroundImage = "none";
+      }, [])
 
     // console.log("Usuario en la pantalla principal", usuario)
     //console.log("Id del usuario", id)

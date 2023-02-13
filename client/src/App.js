@@ -1,3 +1,5 @@
+import "../node_modules/rsuite/dist/rsuite.min.css";
+import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Login from "./pages/Login/Login";

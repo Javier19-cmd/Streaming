@@ -219,13 +219,12 @@
     top: 100%;
 }
 
-.NombrePelicula{
+/* .NombrePelicula{
     position: relative;
     text-align: center;
     top: 75%;
-    /*Centrando  el botón*/
     left: 2%;
-}
+} */
 
 .videoPelicula{
     position: absolute;
@@ -233,7 +232,7 @@
     left: 35%;
 }
 
-.btnReproducirPelicula{
+ /* .btnReproducirPelicula{
     position: relative;
     top: 100%;
     left: 45%;
@@ -251,7 +250,6 @@
     box-shadow: 0 9px #999;
 }
 
-/*Estilo para el botón*/
 .btnLike{
     position: relative;
     top: 100%;
@@ -260,7 +258,7 @@
     padding: 15px 25px;
     font-size: 24px;
     cursor: pointer;
-    text-align: center;	
+    text-align: center;
     text-decoration: none;
     outline: none;
     color: #fff;
@@ -268,4 +266,10 @@
     border: none;
     border-radius: 15px;
     box-shadow: 0 9px #999;
-}
+} */
+
+/* .videoPelicula{
+    position: absolute;
+    top: 100%;
+    left: 35%;
+} */

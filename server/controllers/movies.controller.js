@@ -16,4 +16,17 @@ export const searchMovie = async (req, res) => {
         .limit(10)
         .then((data) => { res.json(data) })
         .catch((error) => { res.status(400).json('Error: ' + error) })
-} 
+}
+
+export const listMovies = async (req, res) => {
+    // Buscando los datos por cualquier campo.
+    const search  = req.params.dato
+
+    console.log(search)
+    // Buscando los datos.
+    await Movie.find({})
+        .sort({nombre: 1})
+        .limit(10)
+        .then((data) => { res.json(data) })
+        .catch((error) => { res.status(400).json('Error: ' + error) })
+}

@@ -186,7 +186,8 @@ const Home = () => {
                                                     borderRadius: "5px",
                                                     padding: "10px",
                                                     fontSize: "20px",
-                                                    cursor: "pointer"
+                                                    cursor: "pointer",
+                                                    left: "10%",
                                                 }}
 
                                         >Reproducir Película</button>
@@ -215,7 +216,8 @@ const Home = () => {
                                                     borderRadius: "5px",
                                                     padding: "10px",
                                                     fontSize: "20px",
-                                                    cursor: "pointer"
+                                                    cursor: "pointer",
+                                                    left: "15%",
                                                 }}
                                                 
                                             >Like</button>
@@ -270,7 +272,8 @@ const Home = () => {
                                                     borderRadius: "5px",
                                                     padding: "10px",
                                                     fontSize: "20px",
-                                                    cursor: "pointer"
+                                                    cursor: "pointer",
+                                                    left: "10%",
                                                 }}
                                             >Reproducir Película</button>
                                             {
@@ -302,7 +305,8 @@ const Home = () => {
                                                     borderRadius: "5px",
                                                     padding: "10px",
                                                     fontSize: "20px",
-                                                    cursor: "pointer"
+                                                    cursor: "pointer",
+                                                    left: "15%",
                                                 }}
                                                 >Like</button>
 

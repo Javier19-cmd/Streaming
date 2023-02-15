@@ -37,8 +37,8 @@ export const register = async (req, res) => {
 export const updateUser = async (req, res) => {
     try {
         const id = req.params.id;
-        const { nombres, apellidos, imagen } = req.body;
-        const user = await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(id)}, { nombres, apellidos, imagen }, { new: true });
+        const { nombres, apellidos, imagen, telefonos } = req.body;
+        await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(id)}, { nombres, apellidos, imagen, telefonos }, { new: true });
         res.status(201).json({code: 201, msg: 'Usuario actualizado satisfactoriamente.'});
     } catch(err) {
         res.status(500).json({ code: 500, msg: 'Error: ' + err }) 

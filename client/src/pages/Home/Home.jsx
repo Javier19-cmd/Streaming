@@ -65,7 +65,32 @@ const Home = () => {
 
     const {usuario, id} = useParams()
 
+    const [pel, setPel] = useState([]) // Arreglo para jalar películas "aleatorias".
+
+    const [pelAct, setPelAct] = useState([]) // Arreglo para enseñar el video.
+
+    const Pel = async () => { // Método para jalar películas "aleatorias".
+        // Solicitando la película.
+        try{
+            // Haciendo la petición.
+            const response = await axios.get(`http://localhost:5000/movies/`, {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                }
+            });
+            // Convirtiendo la respuesta a JSON.
+            const data = await response.data;
+            setPel(data)
+            console.log(data)
+        }catch(error){
+            console.log(error)
+        }
+    
+    }
+
+
     useEffect(() => {
+        Pel()
         document.body.style.backgroundColor = '#1E855F';
         document.body.style.backgroundImage = "none";
       }, [])
@@ -118,28 +143,58 @@ const Home = () => {
                 {/* Verificando que peli no esté vacío */}
                 {peli.length !== 0 ? (
                     
-                    <div>
+                    <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(5, 0.5fr)",
+                            gridTemplateRows: "repeat(5, 0.5fr)",
+                            gridGap: "20px",
+                            width: "100%"
+                    }}>
                         {/* Recorriendo e imprimiendo la lista de películas */}
                         
                         {
                             peli.map((pelicula, i) => {
                                 return(
                                     <div key={i} className="Pelicula">
-                                        <h1 className="NombrePelicula">{pelicula.nombre}</h1>
+                                        <h1 className="NombrePelicula"
+                                        
+                                            /*Colocando el título encima de los botones */
+                                            style={{
+                                                position: "relative",
+                                                zIndex: "1"
+                                            }}
+
+                                        >{pelicula.nombre}</h1>
         
                                         {/* Creando un botón para reproducir la película deseada */}
 
                                         <button className="btnReproducirPelicula"
                                             onClick={
                                                 () => {
-                                                    handleClick() // Reproduciendo el video.
-                                                    historial(usuario, id, pelicula.nombre, pelicula.link) // Mandando los datos al historial.
+                                                    // Enseñando solo el video que se desea reproducir.
+                                                    handleClick()
+                                                    // Mandando los datos al historial.
+                                                    historial(usuario, id, pelicula.nombre, pelicula.link)
+                                                    setPelAct(pelicula.link)
                                                 }
                                             }
+                                            
+                                            style={{
+                                                    position: "relative",
+                                                    backgroundColor: "green",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: "5px",
+                                                    padding: "10px",
+                                                    fontSize: "20px",
+                                                    cursor: "pointer",
+                                                    left: "10%",
+                                                }}
+
                                         >Reproducir Película</button>
                                         {
                                             showVideo && (
-                                                <ReactPlayer className="videoPelicula" url={pelicula.link} controls={true}/>
+                                                <ReactPlayer className="videoPelicula" url={pelAct} controls={true}/>
                                             )
                                         }
 
@@ -153,6 +208,19 @@ const Home = () => {
                                                 Like(usuario, id, pel, link)
 
                                             }}
+
+                                            style={{
+                                                    position: "relative",
+                                                    backgroundColor: "green",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: "5px",
+                                                    padding: "10px",
+                                                    fontSize: "20px",
+                                                    cursor: "pointer",
+                                                    left: "15%",
+                                                }}
+                                                
                                             >Like</button>
 
                                     </div>
@@ -164,8 +232,91 @@ const Home = () => {
 
                 ) : (
                     <>
-                        <h1 className="Nada">No se encontró nada</h1>
-                    </> 
+                        {/* Creando el grid con las películas y los botones de like y reproducir */}
+                        <div style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(5, 0.5fr)",
+                            gridTemplateRows: "repeat(5, 0.5fr)",
+                            gridGap: "20px",
+                            width: "100%"
+                        }}>
+                            {
+                                pel.map((pelicula, i) => {
+                                    return(
+                                        <div key={i} className="Pelicula">
+                                            <h1 className="NombrePelicula"
+                                            
+                                                /*Colocando el título encima de los botones */
+                                                style={{
+                                                    position: "relative",
+                                                    zIndex: "1"
+                                                }}
+                                            >{pelicula.nombre}</h1>
+        
+                                            {/* Creando un botón para reproducir la película deseada */}
+                                            <button className="btnReproducirPelicula"
+                                                onClick={
+                                                    () => {
+                                                        // Enseñando solo el video que se desea reproducir.
+                                                        handleClick()
+                                                        // Mandando los datos al historial.
+                                                        historial(usuario, id, pelicula.nombre, pelicula.link)
+                                                        setPelAct(pelicula.link)
+                                                    }
+                                                }
+
+                                                style={{
+                                                    position: "relative",
+                                                    backgroundColor: "green",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: "5px",
+                                                    padding: "10px",
+                                                    fontSize: "20px",
+                                                    cursor: "pointer",
+                                                    left: "10%",
+                                                }}
+                                            >Reproducir Película</button>
+                                            {
+                                                showVideo && (
+                                                    <ReactPlayer className="videoPelicula" 
+                                                    url={pelAct}
+                                                    controls={true}
+                                                    
+                                                    />
+                                                )
+                                            }
+
+                                            <button 
+                                                className="btnLike"
+                                                
+                                                /* Obteniendo el usuario y la película a dar like*/
+                                                onClick={() => {
+                                                    const pel = pelicula.nombre // Nombre de la película.
+                                                    const link = pelicula.link // Link de la película.
+                                                    Like(usuario, id, pel, link)
+
+                                                }}
+
+                                                style={{
+                                                    position: "relative",
+                                                    backgroundColor: "green",
+                                                    color: "white",
+                                                    border: "none",
+                                                    borderRadius: "5px",
+                                                    padding: "10px",
+                                                    fontSize: "20px",
+                                                    cursor: "pointer",
+                                                    left: "15%",
+                                                }}
+                                                >Like</button>
+
+                                        </div>
+                                    )
+                                })
+                            }
+                        </div>
+                    </>
                 )}
             </div>
         )

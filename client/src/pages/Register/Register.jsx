@@ -2,7 +2,6 @@ import "./Register.css";
 import { React, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Loader } from "rsuite";
-import "../Home/Home";
 import Swal from 'sweetalert2';
 import axios from 'axios'; 
 

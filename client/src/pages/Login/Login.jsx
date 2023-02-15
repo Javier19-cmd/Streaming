@@ -3,14 +3,15 @@ import { React, useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Loader } from "rsuite";
 import axios from "axios";
+import Swal from 'sweetalert2';
 import logo from "../../assets/logo.png";
-import background from '../../assets/background.jpg';
 
 const Login = () => {
   const navigate = useNavigate(); // Hook para navegar entre páginas.
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    localStorage.clear();
     document.body.style.removeProperty('background-color');
     document.body.style.removeProperty('background-image');
   }, [])
@@ -30,8 +31,10 @@ const Login = () => {
         .then((res) => {
           localStorage.setItem("token", res.data.token);
           navigate(`/pantalla_principal/${usuario}/${res.data.user.id}`);
-        })
-        .finally(() => setLoading(false));
+        }).catch((err) => {
+          console.log(err);
+          Swal.fire('¡Atención!', err.response.data.msg, 'warning');
+        }).finally(() => setLoading(false));
     } catch (error) {
       console.log(error);
       setLoading(false);

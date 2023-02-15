@@ -9,7 +9,6 @@ export const compare = async (passwordPlain, hashPassword) => {
 }
 
 export const verifyToken = (req, res, next) => {
-    const time = new Date().getTime();
     const bearerHeader = req.headers['authorization'];
     if(typeof bearerHeader !== 'undefined') {
         const bearerToken = bearerHeader.split(" ")[1];
@@ -18,4 +17,8 @@ export const verifyToken = (req, res, next) => {
     } else {
         return res.status(401).send({code: "401", details: `Token de autorización es necesario.`});
     }
+}
+
+export const parseJwt = (token) => {
+    return JSON.parse(Buffer.from(token.split('.')[1], 'base64').toString());
 }

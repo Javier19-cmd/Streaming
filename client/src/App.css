@@ -55,3 +55,11 @@ body {
 .logo-img {
     width: 50%;
 }
+
+.small-logo-img {
+    width: 10%;
+}
+
+.default-user-img {
+    width: 25%;
+}

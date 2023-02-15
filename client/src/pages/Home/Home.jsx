@@ -3,6 +3,7 @@ import {React, useState, useEffect} from "react";
 import ReactPlayer from 'react-player';
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import NavBar from "../../components/Navbar.jsx";
 
 const Like = (usuario,id_user, pelicula, link) => {
     // console.log(usuario)
@@ -97,7 +98,7 @@ const Home = () => {
     
     return (
             <div className="Todo">
-                
+                <NavBar />
                 <h1 className="titulo">Bienvenido a la pantalla principal del sistema de streaming</h1>
                 
                 {/* Input para ingresar el nombre de las películas */}

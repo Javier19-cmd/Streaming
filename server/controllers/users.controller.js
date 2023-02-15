@@ -1,6 +1,7 @@
-import User from "../models/users.model.js"
-import { encrypt, compare } from "../utils/auth.js";
+import { User } from "../models/users.model.js"
+import { encrypt, compare, parseJwt } from "../utils/auth.js";
 import jwt from 'jsonwebtoken';
+import mongoose from "mongoose";
 
 export const login = async (req, res) => { 
     try {
@@ -28,6 +29,27 @@ export const register = async (req, res) => {
         }).catch((error) => { 
             res.status(400).json({ code: 400, msg: 'Error: ' + error }) 
         });
+    } catch(err) {
+        res.status(500).json({ code: 500, msg: 'Error: ' + err }) 
+    }
+}
+
+export const updateUser = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const { nombres, apellidos, imagen } = req.body;
+        const user = await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(id)}, { nombres, apellidos, imagen }, { new: true });
+        res.status(201).json({code: 201, msg: 'Usuario actualizado satisfactoriamente.'});
+    } catch(err) {
+        res.status(500).json({ code: 500, msg: 'Error: ' + err }) 
+    }
+}
+
+export const getUser = async (req, res) => {
+    try {
+        const tokenInfo = parseJwt(req.token);
+        const user = await User.findOne({_id: mongoose.Types.ObjectId(tokenInfo.id)}, {contrasena: 0});
+        res.status(200).json(user);
     } catch(err) {
         res.status(500).json({ code: 500, msg: 'Error: ' + err }) 
     }

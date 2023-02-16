@@ -73,7 +73,7 @@ const Home = () => {
         // Solicitando la película.
         try{
             // Haciendo la petición.
-            const response = await axios.get(`http://localhost:5000/movies/`, {
+            const response = await axios.get(`http://localhost:5000/movies1/`, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('token')
                 }

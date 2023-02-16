@@ -65,14 +65,14 @@ const NavBar = (props) => {
                   Inicio
                 </Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="/about">
-                  Acerca de
+                  Charts
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/contact">
-                  Contacto
+                  Charts
                 </Link>
               </li>
               <li className="nav-item dropdown">

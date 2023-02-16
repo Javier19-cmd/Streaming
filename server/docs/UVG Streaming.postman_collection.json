@@ -1,0 +1,336 @@
+{
+	"info": {
+		"_postman_id": "8aa4bc65-9183-4d28-88d6-9c102662cef5",
+		"name": "UVG Streaming",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23989467"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"axel1@email.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"axel1@email.com\",\r\n    \"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Movies",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzYzMDA1NzIsImV4cCI6MTcwNzgzNjU3Mn0.75I7NBb9O78n5-9jjvi8MT5mLBn9lyGQHZEv-M0NxFY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete LIke",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzYzMDA1NzIsImV4cCI6MTcwNzgzNjU3Mn0.75I7NBb9O78n5-9jjvi8MT5mLBn9lyGQHZEv-M0NxFY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/likes/63e88fe981cf85f130831f8d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"likes",
+						"63e88fe981cf85f130831f8d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0NzMzNzEsImV4cCI6MTcwODAwOTM3MX0.13n5MBUq4rRFIPgYvP3VYOryUvwfjASNHm6KXi7QkS0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/atool/OneDrive/Imágenes/proyectos_temporal/banner_name.jpg"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Files",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get File",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0NzMzNzEsImV4cCI6MTcwODAwOTM3MX0.13n5MBUq4rRFIPgYvP3VYOryUvwfjASNHm6KXi7QkS0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/files/63ecfbda280f2a7412e293f4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"files",
+						"63ecfbda280f2a7412e293f4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Render File",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0NzMzNzEsImV4cCI6MTcwODAwOTM3MX0.13n5MBUq4rRFIPgYvP3VYOryUvwfjASNHm6KXi7QkS0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/image/6e022419c5336f19e79ace6a58c4aa4c.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"image",
+						"6e022419c5336f19e79ace6a58c4aa4c.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Embeded",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0ODA1NTgsImV4cCI6MTcwODAxNjU1OH0.6HEMNSd2vH-MMJxAgyizMZEdkt2KAqFoVqur34QWvjs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"telefono\": \"666666\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/user/63e87481d1f0e9e1f4210677",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"63e87481d1f0e9e1f4210677"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0ODA1NTgsImV4cCI6MTcwODAxNjU1OH0.6HEMNSd2vH-MMJxAgyizMZEdkt2KAqFoVqur34QWvjs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombres\": \"Axel Leonardo\", \r\n    \"apellidos\": \"López Barrera\", \r\n    \"imagen\": \"63ecfbda280f2a7412e293f4\",\r\n    \"telefonos\": [\r\n        \"1234\", \"123456\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/user/63e87481d1f0e9e1f4210677",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"user",
+						"63e87481d1f0e9e1f4210677"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTg3NDgxZDFmMGU5ZTFmNDIxMDY3NyIsImVtYWlsIjoiYXhlbEBlbWFpbC5jb20iLCJpYXQiOjE2NzY0ODA1NTgsImV4cCI6MTcwODAxNjU1OH0.6HEMNSd2vH-MMJxAgyizMZEdkt2KAqFoVqur34QWvjs",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/logged-user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"logged-user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

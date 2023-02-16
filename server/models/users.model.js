@@ -5,6 +5,17 @@
  */
 import mongoose, { Schema } from "mongoose"
 
+const contactoSchema = new mongoose.Schema({
+    telefono: {
+        type: String,
+        required: false
+    },
+    direccion: {
+        type: String,
+        required: false
+    }
+})
+
 // Creando el esquema para insertar y consultar usuarios.
 const userSchema = new mongoose.Schema({
     correo: {
@@ -15,8 +26,8 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    telefonos: {
-        type: [String],
+    contacto: {
+        type: contactoSchema,
         required: false
     },
     nombres: {

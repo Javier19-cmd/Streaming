@@ -37,8 +37,18 @@ export const register = async (req, res) => {
 export const updateUser = async (req, res) => {
     try {
         const id = req.params.id;
-        const { nombres, apellidos, imagen, telefonos } = req.body;
-        await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(id)}, { nombres, apellidos, imagen, telefonos }, { new: true });
+        const { nombres, apellidos, imagen, telefono, direccion } = req.body;
+        await User.findOneAndUpdate({_id: mongoose.Types.ObjectId(id)}, { contacto: { telefono } }, { new: true });
+        res.status(201).json({code: 201, msg: 'Usuario actualizado satisfactoriamente.'});
+    } catch(err) {
+        res.status(500).json({ code: 500, msg: 'Error: ' + err }) 
+    }
+}
+
+export const updateUser1 = async (req, res) => {
+    try {
+        const id = req.params.id;
+        await User.updateOne({ _id: mongoose.Types.ObjectId(id) }, { $unset: { 'contacto.telefono': 1 } });
         res.status(201).json({code: 201, msg: 'Usuario actualizado satisfactoriamente.'});
     } catch(err) {
         res.status(500).json({ code: 500, msg: 'Error: ' + err }) 
